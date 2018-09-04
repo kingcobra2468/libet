@@ -56,7 +56,6 @@ std::list<std::string> * methods::splitString(std::string phrase){
     std::list<std::string> * splitWords = new std::list<std::string>;
     std::string word;
     for (auto character : phrase){
-        std::cout << character << std::endl;
         if(character != ' '){
             word+=character;
         }
