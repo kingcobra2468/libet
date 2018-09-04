@@ -3,7 +3,7 @@
 #include "myFunction.h"
 #include <ctype.h>
 #include <forward_list>
-
+#include <list>
 
 std::string methods::lower(std::string String){
     std::string * loweredWord = new std::string; 
@@ -51,4 +51,19 @@ std::forward_list<char> * methods::removeInString(std::string * inputString, cha
     return filteredList;
 }
 
-
+std::list<std::string> * methods::splitString(std::string phrase){
+    phrase.append(" ");
+    std::list<std::string> * splitWords = new std::list<std::string>;
+    std::string word;
+    for (auto character : phrase){
+        std::cout << character << std::endl;
+        if(character != ' '){
+            word+=character;
+        }
+        else{
+            splitWords->push_back(word);
+            word.clear();
+        }
+    }
+    return splitWords;
+}
