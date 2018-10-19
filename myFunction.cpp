@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
-#include "myFunction.h"
+#include "/home/erik/Documents/Programming/CPP/Library/myFunction.h"
 #include <ctype.h>
 #include <forward_list>
 #include <list>
+#include <string>
 
 std::string methods::lower(std::string String){
     std::string * loweredWord = new std::string; 
@@ -14,7 +15,6 @@ std::string methods::lower(std::string String){
     return *loweredWord;
     delete loweredWord;
 };
-
 std::string methods::upper(std::string String){
     std::string * loweredWord = new std::string; 
     for(int i = 0; i < String.length(); i++){
@@ -24,7 +24,6 @@ std::string methods::upper(std::string String){
     return *loweredWord;
     delete loweredWord;
 };
-
 char* methods::stringToChar(std::string parseString){ //c_chr()
     int stringLength = parseString.length();
     char* charString = new char[stringLength];
@@ -42,7 +41,6 @@ std::string methods::charToString(char * charArray){
     return *compiledWord;
     delete compiledWord;
 };
-
 std::forward_list<char> * methods::removeInString(std::string * inputString, char removeWhat, bool endOfList){
     std::forward_list<char> * filteredList = new std::forward_list<char>;
     if(endOfList){*inputString+="`";};
@@ -50,7 +48,6 @@ std::forward_list<char> * methods::removeInString(std::string * inputString, cha
     filteredList->remove_if([removeWhat](char in){return in == removeWhat ? true : false; });
     return filteredList;
 }
-
 std::list<std::string> * methods::splitString(std::string phrase){
     phrase.append(" ");
     std::list<std::string> * splitWords = new std::list<std::string>;
@@ -66,3 +63,12 @@ std::list<std::string> * methods::splitString(std::string phrase){
     }
     return splitWords;
 }
+
+template < typename datatype> datatype * methods::toDS(int argc, char ** argv){
+        datatype * tempPtr = new datatype;
+        for(int i = 1; i < argc; i++){
+            tempPtr->push_back(argv[i]);
+        }
+    return tempPtr;
+}
+template std::list<std::string> * methods::toDS(int argc, char ** argv);

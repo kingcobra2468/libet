@@ -2,6 +2,7 @@
 #include <string>
 #include <forward_list>
 #include <list>
+#include <string>
 
 class methods {
     private:
@@ -14,4 +15,5 @@ class methods {
         std::string charToString(char* charArray);
         std::forward_list<char> *removeInString(std::string * inputString, char removeWhat, bool endOfList);
         std::list<std::string> * splitString(std::string phrase);
+        template <typename datatype> datatype * toDS(int argc, char ** argv);
 };
