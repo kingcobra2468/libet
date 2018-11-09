@@ -15,7 +15,7 @@ int sqlite3Lib::callback( //CREATE FRIEND
     ){
     sqlite3Lib* obj = (sqlite3Lib*) NotUsed;
 	int i;
-    std::vector<std::string> temp;// = new std::vector<std::string>; 
+    std::vector<std::string> temp;
 	for(i=0; i<recordsNum; i++)
 	{
 		//std::cout<<recordFieldName[i]<<" = " << (recordFieldData[i] ? recordFieldData[i] : "NULL")<<"\n";
@@ -41,14 +41,6 @@ std::deque<std::vector<std::string>> sqlite3Lib::returnRecords(
     sprintf(str, "SELECT %s FROM %s", fields.c_str(), table.c_str());
     int rc;
     rc = sqlite3_exec(sqlite3Obj, str, callback, (void*) this, NULL);
-    if( rc )
-	{
-		std::cout<<"Can't open database: "<<sqlite3_errmsg(sqlite3Obj)<<"\n";
-	} 
-	else
-	{
-		std::cout<<"Open database successfully\n\n";
-    }
     return tempReturn;
 };
 

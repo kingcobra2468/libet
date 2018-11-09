@@ -29,5 +29,5 @@ class sqlite3Lib{
             sqlite3 * sqlite3Obj,
             std::string command
             );
-
+        
 };
