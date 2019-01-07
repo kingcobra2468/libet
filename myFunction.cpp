@@ -64,11 +64,5 @@ std::list<std::string> * methods::splitString(std::string phrase){
     return splitWords;
 }
 
-template < typename datatype> datatype * methods::toDS(int argc, char ** argv){
-        datatype * tempPtr = new datatype;
-        for(int i = 1; i < argc; i++){
-            tempPtr->push_back(argv[i]);
-        }
-    return tempPtr;
-}
-template std::list<std::string> * methods::toDS(int argc, char ** argv);
+
+//template std::list<std::string> * methods::toDS(int argc, char ** argv);
