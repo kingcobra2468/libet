@@ -9,7 +9,7 @@ TEST_LIB    = $(LIB)_tests
 STATIC      = $(BUILD_DIR)$(LIB).a
 SHARED_LIB  = $(BUILD_DIR)$(LIB).so
 SRC         = $(wildcard src/*.cpp)
-TEST_SRC    = $(wildcard test/*.cpp)
+TEST_SRC    = $(wildcard test/*test.cpp)
 OBJ         = $(SRC:.cpp=.o)
 
 .PHONY: all
