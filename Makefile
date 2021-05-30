@@ -1,16 +1,17 @@
 BUILD_DIR   = bin/
 CC          = g++
-CFLAGS      = -Wall -Werror -Iinclude -o2 -std=c++17
+CFLAGS      = -Wall -Werror -Iinclude -Ilib -o2 -std=c++17
 SO_CFLAGS   = -fPIC
-TEST_CFLAGS = -static -Lbin/ -let -Ilib/
 LDFLAGS     = -shared
 LIB         = libet
-TEST_LIB    = $(LIB)_tests
 STATIC      = $(BUILD_DIR)$(LIB).a
 SHARED_LIB  = $(BUILD_DIR)$(LIB).so
-SRC         = $(wildcard src/*.cpp)
-TEST_SRC    = $(wildcard test/*test.cpp)
+SRC         = $(wildcard src/**/*.cpp)
 OBJ         = $(SRC:.cpp=.o)
+TEST_CFLAGS = -static -Lbin/ -let
+TEST_EXEC   = $(LIB)_tests
+TEST_SRC    = $(wildcard test/*.cpp)
+TEST_OBJ    = $(TEST_SRC:.cpp=.o)
 
 .PHONY: all
 all: $(STATIC) $(SHARED_LIB)
@@ -27,8 +28,9 @@ $(STATIC): $(OBJ)
 build:
 	mkdir -p $(BUILD_DIR)
 
-test: $(STATIC)
-	$(CC) $(CFLAGS) $(TEST_SRC) -o  $(BUILD_DIR)$(TEST_LIB) $(TEST_CFLAGS)
+test: $(STATIC) $(TEST_OBJ)
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)$(TEST_EXEC) \
+	$(addprefix $(BUILD_DIR), $(notdir $(TEST_OBJ))) $(TEST_CFLAGS)
 
 .PHONY: clean
 clean:

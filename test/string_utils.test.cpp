@@ -1,4 +1,3 @@
-#define CATCH_CONFIG_MAIN
 #include <et/utils/string_utils.hpp>
 #include <catch.hpp>
 #include <string>
