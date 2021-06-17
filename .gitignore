@@ -1,0 +1,5 @@
+bin/
+.vscode/
+docs/doxygen/
+docs/html/
+docs/latex/
