@@ -27,7 +27,7 @@ namespace et::utils::string
     {
         int str_length = input_str.length();
         char *char_arr = new char[str_length + 1];
-        char_arr[str_length] = '\0';
+        char_arr[str_length] = '\0'; // set the terminator for the cstring
 
         for (auto i = 0; i < str_length; i++)
             char_arr[i] = input_str.at(i);
@@ -76,7 +76,7 @@ namespace et::utils::string
             }
         }
 
-        if (word.length())
+        if (word.length()) // only push a word if one exists
         {
             word_list->push_back(word);
             word.clear();

@@ -32,6 +32,9 @@ test: $(STATIC) $(TEST_OBJ)
 	$(CC) $(CFLAGS) -o $(BUILD_DIR)$(TEST_EXEC) \
 	$(addprefix $(BUILD_DIR), $(notdir $(TEST_OBJ))) $(TEST_CFLAGS)
 
+docs:
+	@doxygen docs/doxygen.config
+
 .PHONY: clean
 clean:
 	rm -fr $(BUILD_DIR)*
